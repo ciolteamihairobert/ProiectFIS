@@ -43,7 +43,21 @@ public class RegisterController implements Initializable {
             public void handle(ActionEvent actionEvent) {
                 String toggleName = ((RadioButton) toggleGroup.getSelectedToggle()).getText();//ia admin/player de pe buton
 
-                if(!tf_username.getText().trim().isEmpty() &&  !tf_password.getText().trim().isEmpty())
+                if(!tf_username.getText().trim().isEmpty() &&  !tf_password.getText().trim().isEmpty()){
+                    DBUtils.registerUser(event, tf_username.getText(),tf_password.getText(), toggleName );
+                }else{
+                    System.out.println("Plese fill in all information");
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setContentText("Please fill in all information");
+                    alert.show();
+                }
+            }
+        });
+
+        button_log_in.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                DBUtils.changeScene(event, logged-in.fxml, "Log in!", null , null);//log in reusit _ > pagina de meniu
             }
         });
 
