@@ -5,7 +5,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-
+import java.sql.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -44,9 +44,9 @@ public class RegisterController implements Initializable {
                 String toggleName = ((RadioButton) toggleGroup.getSelectedToggle()).getText();//ia admin/player de pe buton
 
                 if(!tf_username.getText().trim().isEmpty() &&  !tf_password.getText().trim().isEmpty()){
-                    DBUtils.registerUser(event, tf_username.getText(),tf_password.getText(), toggleName );
+                    DBUtils.registerUser(actionEvent, tf_username.getText(),tf_password.getText(), toggleName );
                 }else{
-                    System.out.println("Plese fill in all information");
+                    System.out.println("Please fill in all information");
                     Alert alert = new Alert(Alert.AlertType.ERROR);
                     alert.setContentText("Please fill in all information");
                     alert.show();
@@ -57,7 +57,7 @@ public class RegisterController implements Initializable {
         button_log_in.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                DBUtils.changeScene(event, logged-in.fxml, "Log in!", null , null);//log in reusit _ > pagina de meniu
+                DBUtils.changeScene(actionEvent , "loggedin.fxml","log in!",null,null);//log in reusit _ > pagina de meniu
             }
         });
 

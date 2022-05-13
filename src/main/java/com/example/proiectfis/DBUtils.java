@@ -7,6 +7,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.stage.Stage;
+import java.sql.*;
+
 
 import java.io.IOException;
 
@@ -37,7 +39,7 @@ public class DBUtils {
             }
         }
         Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
-        Stage.setTitle(title);
+        stage.setTitle(title);
         stage.setScene(new Scene(root, 600 , 400));
         stage.show();
     }
@@ -101,7 +103,7 @@ public class DBUtils {
         }
     }
 
-    public static void registerUser(ActionEvent event, String username, String password) {
+    public static void logInUser(ActionEvent event, String username, String password) {
         Connection connection = null;
         PreparedStatement preapredStatement = null;
         ResultSet resultSet = null;
@@ -117,11 +119,11 @@ public class DBUtils {
                 alert.setContentText("Provided credentials are incorrect!");
                 alert.show();
             }else{
-                while(resultSet.next){
+                while(resultSet.next()){
                     String retrievedPassword = resultSet.getString("password");
                     String retrievedRole = resultSet.getString("role");
                     if(retrievedPassword.equals(password)){
-                        changeScene(event, "logged-in.fxml");
+                        changeScene(event, "loggedin.fxml","Welcome!",username, retrievedRole);//legatura meniu
                     }else{
                         System.out.println("Password did not match!");
                         Alert alert= new Alert(Alert.AlertType.ERROR);
