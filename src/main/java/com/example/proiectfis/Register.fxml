@@ -10,12 +10,12 @@
    <children>
       <AnchorPane prefHeight="497.0" prefWidth="250.0" style="-fx-background-color: C27829;">
          <children>
-            <ImageView blendMode="DARKEN" fitHeight="150.0" fitWidth="200.0" layoutX="51.0" layoutY="107.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView blendMode="DARKEN" fitHeight="150.0" fitWidth="200.0" layoutX="39.0" layoutY="111.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@logo.png" />
                </image>
             </ImageView>
-            <Label layoutX="40.0" layoutY="247.0" text="Betting App" textAlignment="CENTER" textFill="#750811">
+            <Label layoutX="28.0" layoutY="251.0" text="Betting App" textAlignment="CENTER" textFill="#750811">
                <font>
                   <Font name="Microsoft JhengHei Light" size="36.0" />
                </font>
