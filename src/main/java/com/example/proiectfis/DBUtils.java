@@ -12,7 +12,7 @@ import java.sql.*;
 
 import java.io.IOException;
 
-import static com.sun.org.apache.xalan.internal.xsltc.compiler.util.Type.Node;
+//import static com.sun.org.apache.xalan.internal.xsltc.compiler.util.Type.Node;
 
 public class DBUtils {
 
@@ -123,7 +123,7 @@ public class DBUtils {
                     String retrievedPassword = resultSet.getString("password");
                     String retrievedRole = resultSet.getString("role");
                     if(retrievedPassword.equals(password)){
-                        changeScene(event, "loggedin.fxml","Welcome!",username, retrievedRole);//legatura meniu
+                        changeScene(event, "homePage.fxml","Welcome!",username, retrievedRole);//legatura meniu
                     }else{
                         System.out.println("Password did not match!");
                         Alert alert= new Alert(Alert.AlertType.ERROR);
