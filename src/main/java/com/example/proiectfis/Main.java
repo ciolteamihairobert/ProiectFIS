@@ -17,10 +17,14 @@ public class Main extends Application {
 
 
         ///TODO la linia 20 e eroarea de nu ne lasa sa rulam programul
-        Parent root = FXMLLoader.load(getClass().getResource("com.example.proiectfis/Register.fxml"));
-        stage.setTitle("Register");
-        stage.setScene(new Scene(root,600,400));
-        stage.show();
+        //try {
+            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("register.fxml"));
+            stage.setTitle("Register");
+            stage.setScene(new Scene(root, 600, 400));
+            stage.show();
+//        /}catch (NullPointerException exception){
+         //   System.out.println("Nu merge");
+//        }
 
     }
 
