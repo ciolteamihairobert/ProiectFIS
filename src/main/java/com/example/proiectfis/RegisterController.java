@@ -33,8 +33,8 @@ public class RegisterController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         ToggleGroup toggleGroup = new ToggleGroup();
-        rb_admin.setToggleGroup(toggleGroup);
-        rb_player.setToggleGroup(toggleGroup);
+       rb_admin.setToggleGroup(toggleGroup);
+       rb_player.setToggleGroup(toggleGroup);
 
         rb_admin.setSelected(true);
 

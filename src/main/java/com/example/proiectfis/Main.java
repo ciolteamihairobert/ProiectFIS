@@ -8,6 +8,9 @@ import javafx.stage.Stage;
 import javafx.scene.Parent;
 
 import java.io.IOException;
+import java.nio.file.OpenOption;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Main extends Application {
 
@@ -17,14 +20,14 @@ public class Main extends Application {
 
 
         ///TODO la linia 20 e eroarea de nu ne lasa sa rulam programul
-        //try {
+        try {
             Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("register.fxml"));
             stage.setTitle("Register");
             stage.setScene(new Scene(root, 600, 400));
             stage.show();
-//        /}catch (NullPointerException exception){
-         //   System.out.println("Nu merge");
-//        }
+         }catch (IOException exception){
+            Logger.getLogger(RegisterController.class.getName()).log(Level.SEVERE,null,exception);
+          }
 
     }
 

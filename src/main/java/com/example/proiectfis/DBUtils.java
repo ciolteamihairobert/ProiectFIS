@@ -51,7 +51,7 @@ public class DBUtils {
         ResultSet resultSet = null;
 
         try{
-            connection = DriverManager.getConnection("jdbc:mysql//localho:3306/schemafis","root","admin" );
+            connection = DriverManager.getConnection("jdbc:mysql//localhost:3306/schemafis","root","admin" );
             psCheckUserExists = connection.prepareStatement("SELECT * FROM useres WHERE username = ?");
             psCheckUserExists.setString(1,username);
             resultSet = psCheckUserExists.executeQuery();
@@ -109,7 +109,7 @@ public class DBUtils {
         ResultSet resultSet = null;
 
         try{
-            connection = DriverManager.getConnection("jdbc:mysql//localho:3306/schemafis","root","admin" );
+            connection = DriverManager.getConnection("jdbc:mysql//localhost:3306/schemafis","root","admin" );
             preapredStatement = connection.prepareStatement("SELECT password,role FROM users WHERE username = ?");
             preapredStatement.setString(1,username);
 
