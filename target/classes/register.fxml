@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="497.0" prefWidth="745.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.proiectfis.RegisterController">
+   <children>
+      <AnchorPane prefHeight="497.0" prefWidth="250.0" style="-fx-background-color: C27829;">
+         <children>
+            <ImageView blendMode="DARKEN" fitHeight="150.0" fitWidth="200.0" layoutX="39.0" layoutY="111.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@logo.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="28.0" layoutY="251.0" text="Betting App" textAlignment="CENTER" textFill="#750811">
+               <font>
+                  <Font name="Microsoft JhengHei Light" size="36.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="497.0" prefWidth="497.0" style="-fx-background-color: #273b7a;">
+         <children>
+            <ImageView fitHeight="126.0" fitWidth="116.0" layoutX="180.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@login_logo.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="63.0" layoutY="140.0" text="Username" textFill="#e2e836">
+               <font>
+                  <Font name="Microsoft JhengHei Light" size="33.0" />
+               </font>
+            </Label>
+            <Label layoutX="63.0" layoutY="210.0" text="Password" textFill="#e2e836">
+               <font>
+                  <Font size="33.0" />
+               </font>
+            </Label>
+            <TextField fx:id="tf_username" layoutX="250.0" layoutY="151.0" prefHeight="25.0" prefWidth="181.0" />
+            <TextField fx:id="tf_password" layoutX="250.0" layoutY="222.0" prefHeight="25.0" prefWidth="181.0" />
+            <Button fx:id="button_register" alignment="TOP_CENTER" contentDisplay="CENTER" layoutX="150.0" layoutY="375.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="194.0" style="-fx-background-color: yellow; -fx-cursor: hand;" text="Register">
+               <font>
+                  <Font name="Microsoft JhengHei Light" size="17.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+            </Button>
+            <Label layoutX="111.0" layoutY="431.0" text="Already got an account?" textFill="#e2e836">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Button fx:id="button_log_in" layoutX="287.0" layoutY="425.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="96.0" style="-fx-background-color: transparent; -fx-cursor: hand;" text="Log In!" textFill="#d39393">
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Label layoutX="63.0" layoutY="271.0" text="Role" textFill="#e2e836">
+               <font>
+                  <Font size="33.0" />
+               </font>
+            </Label>
+            <RadioButton fx:id="rb_admin" layoutX="183.0" layoutY="286.0" mnemonicParsing="false" text="Administrator" textFill="#e2e836">
+               <font>
+                  <Font name="Microsoft JhengHei Light" size="14.0" />
+               </font>
+            </RadioButton>
+            <RadioButton fx:id="rb_player" layoutX="183.0" layoutY="320.0" mnemonicParsing="false" text="Player" textFill="#e2e836">
+               <font>
+                  <Font name="Microsoft JhengHei Light" size="14.0" />
+               </font>
+            </RadioButton>
+         </children>
+      </AnchorPane>
+   </children>
+</HBox>
