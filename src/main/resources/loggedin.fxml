@@ -29,7 +29,7 @@
                <font>
                   <Font name="Microsoft JhengHei Light" size="33.0" />
                </font></Label>
-            <TextField id="tf_username" layoutX="250.0" layoutY="151.0" prefHeight="25.0" prefWidth="181.0" />
+            <TextField fx:id="tf_username" layoutX="250.0" layoutY="151.0" prefHeight="25.0" prefWidth="181.0" />
             <Label layoutX="63.0" layoutY="210.0" text="Password" textFill="#e2e836">
                <font>
                   <Font name="Microsoft JhengHei Light" size="33.0" />
@@ -38,16 +38,16 @@
                <font>
                   <Font name="Microsoft JhengHei Light" size="33.0" />
                </font></Label>
-            <TextField id="tf_password" layoutX="250.0" layoutY="222.0" prefWidth="181.0" />
-            <RadioButton id="rb_admin" layoutX="183.0" layoutY="286.0" mnemonicParsing="false" text="Administrator" textFill="#e2e836">
+            <TextField fx:id="tf_password" layoutX="250.0" layoutY="222.0" prefWidth="181.0" />
+            <RadioButton fx:id="rb_admin" layoutX="183.0" layoutY="286.0" mnemonicParsing="false" text="Administrator" textFill="#e2e836">
                <font>
                   <Font name="Microsoft JhengHei Light" size="14.0" />
                </font></RadioButton>
-            <RadioButton id="rb_player" layoutX="183.0" layoutY="320.0" mnemonicParsing="false" text="Player" textFill="#e2e836">
+            <RadioButton fx:id="rb_player" layoutX="183.0" layoutY="320.0" mnemonicParsing="false" text="Player" textFill="#e2e836">
                <font>
                   <Font name="Microsoft JhengHei Light" size="14.0" />
                </font></RadioButton>
-            <Button id="button_login" layoutX="220.0" layoutY="375.0" mnemonicParsing="false" style="-fx-background-color: #e2e836; -fx-cursor: hand;" text="Log in" textFill="#0b0b0b">
+            <Button fx:id="button_login" layoutX="220.0" layoutY="375.0" mnemonicParsing="false" style="-fx-background-color: #e2e836; -fx-cursor: hand;" text="Log in" textFill="#0b0b0b">
                <font>
                   <Font name="Microsoft JhengHei Light" size="17.0" />
                </font></Button>

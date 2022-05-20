@@ -57,7 +57,7 @@ public class RegisterController implements Initializable {
         button_log_in.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                DBUtils.changeScene(actionEvent , "loggedin.fxml","log in!",null,null);//log in reusit _ > pagina de meniu
+                DBUtils.changeScene(actionEvent , "/loggedin.fxml","log in!",null,null);//log in reusit _ > pagina de meniu
             }
         });
 
