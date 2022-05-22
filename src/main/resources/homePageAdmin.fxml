@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="497.0" prefWidth="745.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.proiectfis.homePageAdminController">
+   <children>
+      <AnchorPane prefHeight="497.0" prefWidth="250.0" style="-fx-background-color: C27829;">
+         <children>
+            <ImageView blendMode="DARKEN" fitHeight="150.0" fitWidth="200.0" layoutX="45.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@logo.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="30.0" layoutY="30.0" text="Betting App" textFill="#750811">
+               <font>
+                  <Font name="Microsoft JhengHei Light" size="36.0" />
+               </font></Label>
+            <Button fx:id="button_BetAnsView" layoutX="71.0" layoutY="236.0" mnemonicParsing="false" style="-fx-background-color: #e2e836;" text="Bet Answer" textFill="#0f1004">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="button_GameAddView" layoutX="73.0" layoutY="287.0" mnemonicParsing="false" style="-fx-background-color: #e2e836;" text="Add game">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Label layoutX="26.0" layoutY="200.0" text="Choose which table to display">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+         </children></AnchorPane>
+      <AnchorPane prefHeight="497.0" prefWidth="497.0" style="-fx-background-color: #273b7a;">
+         <children>
+            <TableView fx:id="tableView1" layoutX="-2.0" layoutY="-1.0" prefHeight="226.0" prefWidth="503.0" style="-fx-background-color: #e2e836;">
+              <columns>
+                <TableColumn prefWidth="75.0" text="Game no." />
+                <TableColumn prefWidth="75.0" text="Team1" />
+                  <TableColumn prefWidth="75.0" text="Team2" />
+                  <TableColumn prefWidth="75.0" text="Bet" />
+                  <TableColumn prefWidth="75.0" text="Status" />
+              </columns>
+            </TableView>
+            <Label layoutX="340.0" layoutY="239.0" text="Bet Answer" textFill="#e2e836">
+               <font>
+                  <Font name="Microsoft JhengHei Light" size="15.0" />
+               </font>
+            </Label>
+            <TextField fx:id="answer" layoutX="307.0" layoutY="275.0" />
+            <Separator layoutX="267.0" layoutY="225.0" orientation="VERTICAL" prefHeight="268.0" prefWidth="1.0" />
+            <Label layoutX="330.0" layoutY="310.0" text="(Type yes or no)" textFill="#e2e836">
+               <font>
+                  <Font name="Microsoft JhengHei Light" size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="99.0" layoutY="240.0" text="Add game" textFill="#e2e836">
+               <font>
+                  <Font name="Microsoft JhengHei Light" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="21.0" layoutY="279.0" text="Team 1: " textFill="#e2e836">
+               <font>
+                  <Font name="Microsoft JhengHei Light" size="14.0" />
+               </font></Label>
+            <Label layoutX="21.0" layoutY="321.0" text="Team 2:" textFill="#e2e836">
+               <font>
+                  <Font name="Microsoft JhengHei Light" size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="id_t1" layoutX="82.0" layoutY="276.0" />
+            <TextField fx:id="id_t2" layoutX="82.0" layoutY="317.0" />
+            <Button fx:id="button_add" layoutX="82.0" layoutY="380.0" mnemonicParsing="false" style="-fx-background-color: #e2e836;" text=" Add Game" textFill="#161606">
+               <font>
+                  <Font name="Microsoft JhengHei Light" size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="button_answer" layoutX="326.0" layoutY="380.0" mnemonicParsing="false" style="-fx-background-color: #e2e836;" text="Send response">
+               <font>
+                  <Font name="Microsoft JhengHei Light" size="14.0" />
+               </font>
+            </Button>
+         </children></AnchorPane>
+   </children>
+</HBox>
