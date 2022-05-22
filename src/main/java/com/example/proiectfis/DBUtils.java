@@ -150,8 +150,7 @@ public class DBUtils {
                         if (retrievedRole.equals("Player")) {
                             changeScene(event, "/homePage.fxml", "Home", null, null);
                         } else {
-
-                            //changeScene(event, "/homePageAdmin.fxml", "Home", null, null);
+                            changeScene(event, "/homePageAdmin.fxml", "Home", null, null);
                         }
                     } else {
                         System.out.println("Passwords did not match!");
