@@ -38,13 +38,14 @@ public class RegisterController implements Initializable {
 
         rb_admin.setSelected(true);
 
+
         button_register.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
                 String toggleName = ((RadioButton) toggleGroup.getSelectedToggle()).getText();//ia admin/player de pe buton
 
                 if(!tf_username.getText().trim().isEmpty() &&  !tf_password.getText().trim().isEmpty()){
-                    DBUtils.registerUser(actionEvent, tf_username.getText(),tf_password.getText(), toggleName );
+                    DBUtils.registerUser(actionEvent, tf_username.getText(),tf_password.getText(),toggleName);
                 }else{
                     System.out.println("Please fill in all information");
                     Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -57,7 +58,7 @@ public class RegisterController implements Initializable {
         button_log_in.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                DBUtils.changeScene(actionEvent , "/loggedin.fxml","log in!",null,null);//log in reusit _ > pagina de meniu
+                DBUtils.changeScene(actionEvent , "/loggedin.fxml","Log in!",null,null);//log in reusit _ > pagina de meniu
             }
         });
 

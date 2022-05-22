@@ -8,44 +8,38 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.*;
 
-
-import java.io.IOException;
-
-//import static com.sun.org.apache.xalan.internal.xsltc.compiler.util.Type.Node;
-
 public class DBUtils {
 
+    private static String s_name;
+    private static String phone_nr;
 
-    public static void changeScene(ActionEvent event, String fxmlFIle, String title, String username, String role){
-
-        Parent root=null;
-
-        if(username != null && role !=null){
-
+    public static void changeScene(ActionEvent event, String fxmlFile, String title, String username, String role) {
+        Parent root = null;
+        if (username != null && role != null) {
             try {
-                FXMLLoader loader = new FXMLLoader(DBUtils.class.getResource(fxmlFIle));
+                FXMLLoader loader = new FXMLLoader(DBUtils.class.getResource(fxmlFile));
                 root = loader.load();
                 LoggedInController loggedInController = loader.getController();
-                loggedInController.setUserInformation(username,role);
-
-            }catch(IOException e){
+                loggedInController.setUserInformation(username, role);
+            } catch (IOException e) {
                 e.printStackTrace();
             }
-        }else{
-            try{
-                root = FXMLLoader.load(DBUtils.class.getResource(fxmlFIle));
-            }catch (IOException e){
+        } else {
+            try {
+                root = FXMLLoader.load(DBUtils.class.getResource(fxmlFile));
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }
-        Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setTitle(title);
-        stage.setScene(new Scene(root, 600 , 400));
+        stage.setScene(new Scene(root, 600, 400));
         stage.show();
     }
 
@@ -68,123 +62,132 @@ public class DBUtils {
         return new String(hashedPassword, StandardCharsets.UTF_8)
                 .replace("\"", "");
     }
-    public static void registerUser(ActionEvent event, String username, String password, String role){
+
+    public static void registerUser(ActionEvent event, String username, String password, String role) {
         Connection connection = null;
-        PreparedStatement psInsert= null;
+        PreparedStatement psInsert = null;
         PreparedStatement psCheckUserExists = null;
         ResultSet resultSet = null;
-
-        try{
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/schemafis","root","admin" );
+        try {
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/schemafis", "root", "admin");
             psCheckUserExists = connection.prepareStatement("SELECT * FROM users WHERE username = ?");
-            psCheckUserExists.setString(1,username);
+            psCheckUserExists.setString(1, username);
             resultSet = psCheckUserExists.executeQuery();
 
-            if(resultSet.isBeforeFirst()){
+            if (resultSet.isBeforeFirst()) {
                 System.out.println("User already exists");
                 Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setContentText("You cannot use this username");
+                alert.setContentText("You cannot use this username.");
                 alert.show();
-            }else{
-                psInsert = connection.prepareStatement("INSERT INTO users (username,password,role) VALUES (?,?,?)");
-                psInsert.setString(1,username);
-                psInsert.setString(2,password);
-                psInsert.setString(3,role);
+            } else {
+                psInsert = connection.prepareStatement("INSERT INTO users (username, password, role) VALUES (?, ?, ?)");
+                psInsert.setString(1, username);
+                psInsert.setString(2, encodePassword(username, password));
+                psInsert.setString(3, role);
                 psInsert.executeUpdate();
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setContentText("Register succesfully done!");
+                alert.show();
 
             }
-        }catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
-        }finally {
-            if(resultSet != null){
-                try{
+        } finally {
+            if (resultSet != null) {
+                try {
                     resultSet.close();
-                }catch (SQLException e){
+                } catch (SQLException e) {
                     e.printStackTrace();
                 }
             }
-            if(psCheckUserExists != null){
-                try{
+            if (psCheckUserExists != null) {
+                try {
                     psCheckUserExists.close();
-                }catch (SQLException e){
+                } catch (SQLException e) {
                     e.printStackTrace();
                 }
             }
-            if(psInsert != null){
-                try{
+            if (psInsert != null) {
+                try {
                     psInsert.close();
-                }catch (SQLException e){
+                } catch (SQLException e) {
                     e.printStackTrace();
                 }
             }
-            if(connection != null){
-                try{
+            if (connection != null) {
+                try {
                     connection.close();
-                }catch (SQLException e){
+                } catch (SQLException e) {
                     e.printStackTrace();
                 }
             }
         }
+
+
     }
 
     public static void logInUser(ActionEvent event, String username, String password) {
         Connection connection = null;
-        PreparedStatement preapredStatement = null;
+        PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
 
-        try{
-            connection = DriverManager.getConnection("jdbc:mysql//localhost:3306/schemafis","root","admin" );
-            preapredStatement = connection.prepareStatement("SELECT password,role FROM users WHERE username = ?");
-            preapredStatement.setString(1,username);
+        try {
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/schemafis", "root", "admin");
+            preparedStatement = connection.prepareStatement("SELECT password, role FROM users WHERE username = ?");
+            preparedStatement.setString(1, username);
+            resultSet = preparedStatement.executeQuery();
 
-            if(resultSet.isBeforeFirst()){
-                System.out.println("User not found in the databse");
-                Alert alert= new Alert(Alert.AlertType.ERROR);
-                alert.setContentText("Provided credentials are incorrect!");
+            if (!resultSet.isBeforeFirst()) {
+                System.out.println("User not found in the database!");
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("Provided credentials are incorrect");
                 alert.show();
-            }else{
-                while(resultSet.next()){
+            } else {
+                while (resultSet.next()) {
                     String retrievedPassword = resultSet.getString("password");
                     String retrievedRole = resultSet.getString("role");
-                    if(retrievedPassword.equals(password)){
-                        if(retrievedRole.equals("Player")) {
+                    if (retrievedPassword.equals(encodePassword(username, password))) {
+                        if (retrievedRole.equals("Player")) {
                             changeScene(event, "/homePage.fxml", "Home", null, null);
                         } else {
 
-                          //  changeScene(event, "/homePageAdmin.fxml", "OnlineShop", null, null);
+                            //changeScene(event, "/homePageAdmin.fxml", "Home", null, null);
                         }
-                    }else{
-                        System.out.println("Password did not match!");
-                        Alert alert= new Alert(Alert.AlertType.ERROR);
-                        alert.setContentText("Provided credentials are incorrect!");
+                    } else {
+                        System.out.println("Passwords did not match!");
+                        Alert alert = new Alert(Alert.AlertType.ERROR);
+                        alert.setContentText("The provided credentials are incorrect!");
                         alert.show();
                     }
                 }
             }
-        }catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
-        }finally {
-            if(resultSet != null){
-                try{
+        } finally {
+            if (resultSet != null) {
+                try {
                     resultSet.close();
-                }catch (SQLException e){
+                } catch (SQLException e) {
                     e.printStackTrace();
                 }
             }
-            if(preapredStatement != null){
-                try{
-                    preapredStatement.close();
-                }catch (SQLException e){
-                    e.printStackTrace();
-                }
-            }
-            if(connection != null){
-                try{
-                    resultSet.close();
-                }catch (SQLException e){
+            if (preparedStatement != null) {
+                try {
+                    preparedStatement.close();
+                } catch (SQLException e) {
                     e.printStackTrace();
                 }
             }
         }
+        if (connection != null) {
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
     }
+
+
 }
+

@@ -5,16 +5,16 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="497.0" prefWidth="745.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.proiectfis.LoggedInController">
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="497.0" prefWidth="745.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.proiectfis.homePageController">
    <children>
       <AnchorPane prefHeight="497.0" prefWidth="250.0" style="-fx-background-color: C27829;">
          <children>
-            <ImageView blendMode="DARKEN" fitHeight="150.0" fitWidth="200.0" layoutX="39.0" layoutY="111.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView blendMode="DARKEN" fitHeight="150.0" fitWidth="200.0" layoutX="45.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@logo.png" />
                </image>
             </ImageView>
-            <Label layoutX="28.0" layoutY="251.0" text="Betting App" textFill="#750811">
+            <Label layoutX="30.0" layoutY="30.0" text="Betting App" textFill="#750811">
                <font>
                   <Font name="Microsoft JhengHei Light" size="36.0" />
                </font></Label>
@@ -25,7 +25,7 @@
                <image>
                   <Image url="@login_logo.png" />
                </image></ImageView>
-            <Label layoutX="63.0" layoutY="140.0" text="Username" textFill="#e2e836">
+            <Label layoutX="63.0" layoutY="140.0" text="mainpage" textFill="#e2e836">
                <font>
                   <Font name="Microsoft JhengHei Light" size="33.0" />
                </font></Label>
@@ -34,11 +34,11 @@
                <font>
                   <Font name="Microsoft JhengHei Light" size="33.0" />
                </font></Label>
+            <TextField fx:id="tf_password" layoutX="250.0" layoutY="222.0" prefWidth="181.0" />
             <Button fx:id="button_login" layoutX="220.0" layoutY="375.0" mnemonicParsing="false" style="-fx-background-color: #e2e836; -fx-cursor: hand;" text="Log in" textFill="#0b0b0b">
                <font>
                   <Font name="Microsoft JhengHei Light" size="17.0" />
                </font></Button>
-            <PasswordField fx:id="tf_password" layoutX="250.0" layoutY="225.0" prefHeight="25.0" prefWidth="181.0" />
          </children></AnchorPane>
    </children>
 </HBox>
