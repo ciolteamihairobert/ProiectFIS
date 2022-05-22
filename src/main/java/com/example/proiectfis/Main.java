@@ -23,7 +23,7 @@ public class Main extends Application {
         try {
             Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("register.fxml"));
             stage.setTitle("Register");
-            stage.setScene(new Scene(root, 600, 400));
+            stage.setScene(new Scene(root, 745, 497));
             stage.show();
          }catch (IOException exception){
             Logger.getLogger(RegisterController.class.getName()).log(Level.SEVERE,null,exception);
