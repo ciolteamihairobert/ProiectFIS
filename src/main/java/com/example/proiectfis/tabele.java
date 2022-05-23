@@ -4,21 +4,17 @@ package com.example.proiectfis;
 public class tabele {
     private String echipa1,echipa2, data;
 
-    public int getId_game() {
-        return id_game;
-    }
 
-    public void setId_game(int id_game) {
-        this.id_game = id_game;
-    }
 
-    private int id_game;
 
-    public tabele(String echipa1,String echipa2, String data,int id_game) {
+
+
+
+    public tabele(String echipa1,String echipa2, String data) {
         this.echipa1 = echipa1;
         this.echipa2=echipa2;
         this.data=data;
-        this.id_game=id_game;
+
 
     }
 
