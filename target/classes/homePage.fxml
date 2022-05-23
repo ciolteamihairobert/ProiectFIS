@@ -35,9 +35,9 @@
          <children>
             <TableView fx:id="tv_disp" layoutX="13.0" layoutY="17.0" prefHeight="464.0" prefWidth="472.0" style="-fx-background-color: transparent;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
               <columns>
-                <TableColumn fx:id="echipa1_id" prefWidth="185.0" text="Echipa 1" />
-                <TableColumn fx:id="echipa2_id" prefWidth="183.0" text="Echipa 2" />
-                  <TableColumn fx:id="data_id" prefWidth="128.0" text="Data" />
+                <TableColumn fx:id="echipa1_id" prefWidth="114.33334600925446" text="Echipa 1" />
+                <TableColumn fx:id="echipa2_id" prefWidth="128.6666488647461" text="Echipa 2" />
+                  <TableColumn fx:id="data_id" prefWidth="116.66670227050781" text="Data" />
               </columns>
             </TableView>
          </children></AnchorPane>

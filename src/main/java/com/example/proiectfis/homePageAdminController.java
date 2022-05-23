@@ -15,11 +15,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
- public class homePageAdminController implements Initializable {
+public class homePageAdminController implements Initializable {
     @FXML
-    private TableView<tabele> tabelView1;
+    private TableView<tabele> tv_disp;
 
-
+    @FXML
+    private TableColumn<tabele, Integer> game_col_id;
     @FXML
     private TableColumn<tabele, String> echipa1_id;
     @FXML
@@ -27,31 +28,27 @@ import java.util.ResourceBundle;
     @FXML
     private TableColumn<tabele, String> data_id;
 
+
+
     @FXML
-    private TextField answer;
+    private Button button_display;
 
     @FXML
-            private TextField id_t1;
-     @FXML
-     private TextField id_t2;
+    private Button button_add;
 
-     @FXML
-     private Button button_add;
-     @FXML
-     private Button button_answer;
+    @FXML
+    private TextField id_t1;
 
-     @FXML
-     private TextField tf_data;
+    @FXML
+    private TextField id_t2;
 
-@FXML
-        private Button button_display;
+    @FXML
+    private TextField tf_data;
 
 
-     ObservableList<tabele> oblist = FXCollections.observableArrayList();
-
+    ObservableList<tabele> oblist = FXCollections.observableArrayList();
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
         button_display.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
@@ -73,8 +70,7 @@ import java.util.ResourceBundle;
                 echipa2_id.setCellValueFactory(new PropertyValueFactory<>("echipa2"));
                 data_id.setCellValueFactory(new PropertyValueFactory<>("data"));
 
-
-                tabelView1.setItems(oblist);
+                tv_disp.setItems(oblist);
 
             }
         });

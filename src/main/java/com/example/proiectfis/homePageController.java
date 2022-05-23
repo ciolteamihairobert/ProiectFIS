@@ -22,8 +22,6 @@ public class homePageController implements Initializable {
     private TableView<tabele> tv_disp;
 
     @FXML
-    private TableColumn<tabele, Integer> game_col_id;
-    @FXML
     private TableColumn<tabele, String> echipa1_id;
     @FXML
     private TableColumn<tabele, String> echipa2_id;
@@ -55,7 +53,6 @@ public class homePageController implements Initializable {
                     echipa1_id.setCellValueFactory(new PropertyValueFactory<>("echipa1"));
                     echipa2_id.setCellValueFactory(new PropertyValueFactory<>("echipa2"));
                     data_id.setCellValueFactory(new PropertyValueFactory<>("data"));
-                    //game_col_id.setCellValueFactory(new PropertyValueFactory<>("game_id"));
 
                     tv_disp.setItems(oblist);
                 }

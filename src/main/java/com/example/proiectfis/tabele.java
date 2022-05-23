@@ -4,19 +4,13 @@ package com.example.proiectfis;
 public class tabele {
     private String echipa1,echipa2, data;
 
-
-
-
-
-
-
     public tabele(String echipa1,String echipa2, String data) {
         this.echipa1 = echipa1;
         this.echipa2=echipa2;
         this.data=data;
-
-
     }
+
+
 
     public String getEchipa1() {
         return echipa1;
