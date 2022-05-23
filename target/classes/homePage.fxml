@@ -29,6 +29,7 @@
             <TextField fx:id="tf_idg_favorites" layoutX="130.0" layoutY="372.0" prefHeight="25.0" prefWidth="114.0" promptText="Game Id" />
             <TextField fx:id="tf_amount" layoutX="127.0" layoutY="300.0" promptText="Amount" />
             <Button fx:id="button_display_favorites" layoutX="11.0" layoutY="412.0" mnemonicParsing="false" style="-fx-background-color: yellow;" text="Display Favorites" />
+            <Button fx:id="button_disp" layoutX="176.0" layoutY="425.0" mnemonicParsing="false" text="Display" />
          </children></AnchorPane>
       <AnchorPane prefHeight="497.0" prefWidth="534.0" style="-fx-background-color: #273b7a;">
          <children>
