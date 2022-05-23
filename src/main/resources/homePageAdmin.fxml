@@ -33,16 +33,16 @@
                   <Font size="14.0" />
                </font>
             </Label>
+            <Button fx:id="button_display" layoutX="89.0" layoutY="346.0" mnemonicParsing="false" style="-fx-background-color: yellow;" text="Display" />
          </children></AnchorPane>
       <AnchorPane prefHeight="497.0" prefWidth="497.0" style="-fx-background-color: #273b7a;">
          <children>
             <TableView fx:id="tableView1" layoutX="-2.0" layoutY="-1.0" prefHeight="226.0" prefWidth="503.0" style="-fx-background-color: #e2e836;">
               <columns>
-                <TableColumn prefWidth="75.0" text="Game no." />
-                <TableColumn prefWidth="75.0" text="Team1" />
-                  <TableColumn prefWidth="75.0" text="Team2" />
-                  <TableColumn prefWidth="75.0" text="Bet" />
-                  <TableColumn prefWidth="75.0" text="Status" />
+                <TableColumn fx:id="echipa1_id" prefWidth="75.0" text="Echipa 1" />
+                <TableColumn fx:id="echipa2_id" prefWidth="145.0" text="Echipa 2" />
+                  <TableColumn fx:id="data_id" prefWidth="119.0" text="Data" />
+                  <TableColumn fx:id="game_col_id" minWidth="0.0" prefWidth="163.0" text="Game Id" />
               </columns>
             </TableView>
             <Label layoutX="340.0" layoutY="239.0" text="Bet Answer" textFill="#e2e836">

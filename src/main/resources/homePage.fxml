@@ -24,7 +24,7 @@
                </font></Button>
             <TextField fx:id="tf_idg_bet" layoutX="127.0" layoutY="228.0" promptText="Game Id" />
             <Button fx:id="button_favorites" layoutX="10.0" layoutY="372.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="106.0" style="-fx-background-color: yellow;" text="Add to favorites" />
-            <Button  fx:id="button_see_past" layoutX="29.0" layoutY="452.0" mnemonicParsing="false" style="-fx-background-color: yellow;" text="See past bets" />
+            <Button fx:id="button_see_past" layoutX="29.0" layoutY="452.0" mnemonicParsing="false" style="-fx-background-color: yellow;" text="See past bets" />
             <TextField fx:id="tf_1x2" layoutX="127.0" layoutY="267.0" promptText="1 X 2" />
             <TextField fx:id="tf_idg_favorites" layoutX="130.0" layoutY="372.0" prefHeight="25.0" prefWidth="114.0" promptText="Game Id" />
             <TextField fx:id="tf_amount" layoutX="127.0" layoutY="300.0" promptText="Amount" />
@@ -32,10 +32,11 @@
          </children></AnchorPane>
       <AnchorPane prefHeight="497.0" prefWidth="534.0" style="-fx-background-color: #273b7a;">
          <children>
-            <TableView fx:id="tv_disp" layoutX="13.0" layoutY="17.0" prefHeight="464.0" prefWidth="472.0" style="-fx-background-color: transparent;">
+            <TableView fx:id="tv_disp" layoutX="13.0" layoutY="17.0" prefHeight="464.0" prefWidth="472.0" style="-fx-background-color: transparent;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
               <columns>
-                <TableColumn prefWidth="75.0" text="C1" />
-                <TableColumn prefWidth="75.0" text="C2" />
+                <TableColumn fx:id="echipa1_id" prefWidth="185.0" text="Echipa 1" />
+                <TableColumn fx:id="echipa2_id" prefWidth="183.0" text="Echipa 2" />
+                  <TableColumn fx:id="data_id" prefWidth="128.0" text="Data" />
               </columns>
             </TableView>
          </children></AnchorPane>

@@ -16,8 +16,7 @@ import java.sql.*;
 
 public class DBUtils {
 
-    private static String s_name;
-    private static String phone_nr;
+
 
     public static void changeScene(ActionEvent event, String fxmlFile, String title, String username, String role) {
         Parent root = null;
@@ -187,6 +186,9 @@ public class DBUtils {
         }
     }
 
-
+    public static Connection getConnection() throws SQLException {
+        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/schemafis", "root", "admin");
+        return connection;
+    }
 }
 

@@ -18,12 +18,12 @@
                <font>
                   <Font name="Microsoft JhengHei Light" size="36.0" />
                </font></Label>
-            <Button id="button_BetAnsView" layoutX="71.0" layoutY="236.0" mnemonicParsing="false" style="-fx-background-color: #e2e836;" text="Bet Answer" textFill="#0f1004">
+            <Button fx:id="button_BetAnsView" layoutX="71.0" layoutY="236.0" mnemonicParsing="false" style="-fx-background-color: #e2e836;" text="Bet Answer" textFill="#0f1004">
                <font>
                   <Font size="14.0" />
                </font>
             </Button>
-            <Button id="button_GameAddView" layoutX="73.0" layoutY="287.0" mnemonicParsing="false" style="-fx-background-color: #e2e836;" text="Add game">
+            <Button fx:id="button_GameAddView" layoutX="73.0" layoutY="287.0" mnemonicParsing="false" style="-fx-background-color: #e2e836;" text="Add game">
                <font>
                   <Font size="14.0" />
                </font>
@@ -33,16 +33,16 @@
                   <Font size="14.0" />
                </font>
             </Label>
+            <Button fx:id="button_display" layoutX="89.0" layoutY="346.0" mnemonicParsing="false" style="-fx-background-color: yellow;" text="Display" />
          </children></AnchorPane>
       <AnchorPane prefHeight="497.0" prefWidth="497.0" style="-fx-background-color: #273b7a;">
          <children>
-            <TableView id="tableView1" layoutX="-2.0" layoutY="-1.0" prefHeight="226.0" prefWidth="503.0" style="-fx-background-color: #e2e836;">
+            <TableView fx:id="tableView1" layoutX="-2.0" layoutY="-1.0" prefHeight="226.0" prefWidth="503.0" style="-fx-background-color: #e2e836;">
               <columns>
-                <TableColumn prefWidth="75.0" text="Game no." />
-                <TableColumn prefWidth="75.0" text="Team1" />
-                  <TableColumn prefWidth="75.0" text="Team2" />
-                  <TableColumn prefWidth="75.0" text="Bet" />
-                  <TableColumn prefWidth="75.0" text="Status" />
+                <TableColumn fx:id="echipa1_id" prefWidth="75.0" text="Echipa 1" />
+                <TableColumn fx:id="echipa2_id" prefWidth="145.0" text="Echipa 2" />
+                  <TableColumn fx:id="data_id" prefWidth="119.0" text="Data" />
+                  <TableColumn fx:id="game_col_id" minWidth="0.0" prefWidth="163.0" text="Game Id" />
               </columns>
             </TableView>
             <Label layoutX="340.0" layoutY="239.0" text="Bet Answer" textFill="#e2e836">
@@ -50,7 +50,7 @@
                   <Font name="Microsoft JhengHei Light" size="15.0" />
                </font>
             </Label>
-            <TextField layoutX="307.0" layoutY="275.0" />
+            <TextField fx:id="answer" layoutX="307.0" layoutY="275.0" />
             <Separator layoutX="267.0" layoutY="225.0" orientation="VERTICAL" prefHeight="268.0" prefWidth="1.0" />
             <Label layoutX="330.0" layoutY="310.0" text="(Type yes or no)" textFill="#e2e836">
                <font>
@@ -71,14 +71,14 @@
                   <Font name="Microsoft JhengHei Light" size="14.0" />
                </font>
             </Label>
-            <TextField id="id_t1" layoutX="82.0" layoutY="276.0" />
-            <TextField id="id_t2" layoutX="82.0" layoutY="317.0" />
-            <Button id="button_add" layoutX="82.0" layoutY="380.0" mnemonicParsing="false" style="-fx-background-color: #e2e836;" text=" Add Game" textFill="#161606">
+            <TextField fx:id="id_t1" layoutX="82.0" layoutY="276.0" />
+            <TextField fx:id="id_t2" layoutX="82.0" layoutY="317.0" />
+            <Button fx:id="button_add" layoutX="82.0" layoutY="380.0" mnemonicParsing="false" style="-fx-background-color: #e2e836;" text=" Add Game" textFill="#161606">
                <font>
                   <Font name="Microsoft JhengHei Light" size="14.0" />
                </font>
             </Button>
-            <Button id="button_answer" layoutX="326.0" layoutY="380.0" mnemonicParsing="false" style="-fx-background-color: #e2e836;" text="Send response">
+            <Button fx:id="button_answer" layoutX="326.0" layoutY="380.0" mnemonicParsing="false" style="-fx-background-color: #e2e836;" text="Send response">
                <font>
                   <Font name="Microsoft JhengHei Light" size="14.0" />
                </font>
