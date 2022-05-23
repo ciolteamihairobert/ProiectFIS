@@ -6,10 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.net.URL;
@@ -22,8 +19,7 @@ import java.util.ResourceBundle;
     @FXML
     private TableView<tabele> tabelView1;
 
-     @FXML
-     private TableColumn<tabele, Integer> game_col_id;
+
     @FXML
     private TableColumn<tabele, String> echipa1_id;
     @FXML
@@ -43,6 +39,9 @@ import java.util.ResourceBundle;
      private Button button_add;
      @FXML
      private Button button_answer;
+
+     @FXML
+     private TextField tf_data;
 
 @FXML
         private Button button_display;
@@ -64,7 +63,7 @@ import java.util.ResourceBundle;
                     rs = con.createStatement().executeQuery("SELECT * FROM games");
 
                     while (rs.next()) {
-                        oblist.add(new tabele(rs.getString("echipa1"), rs.getString("echipa2"), rs.getString("data"),rs.getInt("game_id")));
+                        oblist.add(new tabele(rs.getString("echipa1"), rs.getString("echipa2"), rs.getString("data")));
                     }
                 } catch (SQLException e) {
                     e.printStackTrace();
@@ -73,10 +72,20 @@ import java.util.ResourceBundle;
                 echipa1_id.setCellValueFactory(new PropertyValueFactory<>("echipa1"));
                 echipa2_id.setCellValueFactory(new PropertyValueFactory<>("echipa2"));
                 data_id.setCellValueFactory(new PropertyValueFactory<>("data"));
-                game_col_id.setCellValueFactory(new PropertyValueFactory<>("game_id"));
+
 
                 tabelView1.setItems(oblist);
 
+            }
+        });
+
+        button_add.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                DBUtils.addGame(event,id_t1.getText(),id_t2.getText(),tf_data.getText());
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setContentText("Game added succesfully!");
+                alert.show();
             }
         });
 
