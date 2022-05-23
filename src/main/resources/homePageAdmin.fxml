@@ -42,7 +42,6 @@
                 <TableColumn fx:id="echipa1_id" prefWidth="75.0" text="Echipa 1" />
                 <TableColumn fx:id="echipa2_id" prefWidth="145.0" text="Echipa 2" />
                   <TableColumn fx:id="data_id" prefWidth="119.0" text="Data" />
-                  <TableColumn fx:id="game_col_id" minWidth="0.0" prefWidth="163.0" text="Game Id" />
               </columns>
             </TableView>
             <Label layoutX="340.0" layoutY="239.0" text="Bet Answer" textFill="#e2e836">
@@ -73,7 +72,7 @@
             </Label>
             <TextField fx:id="id_t1" layoutX="82.0" layoutY="276.0" />
             <TextField fx:id="id_t2" layoutX="82.0" layoutY="317.0" />
-            <Button fx:id="button_add" layoutX="82.0" layoutY="380.0" mnemonicParsing="false" style="-fx-background-color: #e2e836;" text=" Add Game" textFill="#161606">
+            <Button fx:id="button_add" layoutX="83.0" layoutY="409.0" mnemonicParsing="false" style="-fx-background-color: #e2e836;" text=" Add Game" textFill="#161606">
                <font>
                   <Font name="Microsoft JhengHei Light" size="14.0" />
                </font>
@@ -83,6 +82,12 @@
                   <Font name="Microsoft JhengHei Light" size="14.0" />
                </font>
             </Button>
+            <Label layoutX="39.0" layoutY="359.0" text="Data:" textFill="#e2e836">
+               <font>
+                  <Font name="Microsoft JhengHei Light" size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="tf_data" layoutX="82.0" layoutY="356.0" />
          </children></AnchorPane>
    </children>
 </HBox>

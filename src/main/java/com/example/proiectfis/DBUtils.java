@@ -38,7 +38,7 @@ public class DBUtils {
         }
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setTitle(title);
-        stage.setScene(new Scene(root, 600, 400));
+        stage.setScene(new Scene(root, 745, 497));
         stage.show();
     }
 
@@ -189,6 +189,64 @@ public class DBUtils {
     public static Connection getConnection() throws SQLException {
         Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/schemafis", "root", "admin");
         return connection;
+    }
+
+    public static void addGame(ActionEvent event, String echipa1, String echipa2, String data)  {
+        Connection connection=null;
+        PreparedStatement psInsert=null;
+        PreparedStatement psCheckItemExists=null;
+        ResultSet resultSet=null;
+        try{
+            connection= DriverManager.getConnection("jdbc:mysql://localhost:3306/schemafis", "root", "admin");
+            psCheckItemExists = connection.prepareStatement("SELECT * FROM games WHERE echipa1 = ?");
+            psCheckItemExists.setString(1, echipa1);
+            resultSet=psCheckItemExists.executeQuery();
+
+            if(resultSet.isBeforeFirst()){
+                System.out.println("Game already exists!");
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("This game is already added");
+                alert.show();
+            }else{
+                psInsert = connection.prepareStatement("INSERT INTO games (echipa1, echipa2, data) VALUES (?, ?, ?)");
+                psInsert.setString(1,echipa1);
+                psInsert.setString(2,echipa2);
+                psInsert.setString(3,data);
+                psInsert.executeUpdate();
+
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        } finally {
+            if (resultSet!=null){
+                try{
+                    resultSet.close();
+                }catch(SQLException e){
+                    e.printStackTrace();
+                }
+            }
+            if (psCheckItemExists!=null){
+                try{
+                    psCheckItemExists.close();
+                }catch(SQLException e){
+                    e.printStackTrace();
+                }
+            }
+            if (psInsert!=null){
+                try{
+                    psInsert.close();
+                }catch(SQLException e){
+                    e.printStackTrace();
+                }
+            }
+            if (connection!=null){
+                try{
+                    connection.close();
+                }catch(SQLException e){
+                    e.printStackTrace();
+                }
+            }
+        }
     }
 }
 
