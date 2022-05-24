@@ -19,7 +19,7 @@ public class Main extends Application {
     public void start(Stage stage) throws Exception {
 
 
-        ///TODO la linia 20 e eroarea de nu ne lasa sa rulam programul
+
         try {
             Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("register.fxml"));
             stage.setTitle("Register");

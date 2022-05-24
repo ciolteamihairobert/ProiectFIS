@@ -17,18 +17,26 @@ import java.util.ResourceBundle;
 
 public class homePageAdminController implements Initializable {
     @FXML
-    private TableView<tabele> tv_disp;
+    private TableView tv_disp;
 
     @FXML
-    private TableColumn<tabele, Integer> game_col_id;
-    @FXML
-    private TableColumn<tabele, String> echipa1_id;
-    @FXML
-    private TableColumn<tabele, String> echipa2_id;
-    @FXML
-    private TableColumn<tabele, String> data_id;
+    private TableColumn<?, String> id_pariu;
 
+    @FXML
+    private TableColumn<?, String> status_col_id;
 
+    @FXML
+    private TableColumn<?, String> bet_col_id;
+
+    @FXML
+    private TableColumn<?, String> echipa1_id;
+    @FXML
+    private TableColumn<?, String> echipa2_id;
+    @FXML
+    private TableColumn<?, String> data_id;
+
+    @FXML
+    private Button button_BetAnsView;
 
     @FXML
     private Button button_display;
@@ -82,6 +90,33 @@ public class homePageAdminController implements Initializable {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setContentText("Game added succesfully!");
                 alert.show();
+            }
+        });
+
+        ObservableList<bet> list = FXCollections.observableArrayList();
+        button_BetAnsView.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                Connection con = null;
+                ResultSet rs = null;
+                try {
+                    con = DBUtils.getConnection();
+                    rs = con.createStatement().executeQuery("SELECT * FROM cbet");
+                    oblist.removeAll(oblist);
+                    while (rs.next()) {
+                        list.add(new bet(rs.getString("echipa1"), rs.getString("echipa2"), rs.getString("data"),rs.getString("pariu"),rs.getString("amount"),rs.getString("status")));
+                    }
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+
+                echipa1_id.setCellValueFactory(new PropertyValueFactory<>("echipa1"));
+                echipa2_id.setCellValueFactory(new PropertyValueFactory<>("echipa2"));
+                data_id.setCellValueFactory(new PropertyValueFactory<>("data"));
+                id_pariu.setCellValueFactory(new PropertyValueFactory<>("pariu"));
+                bet_col_id.setCellValueFactory(new PropertyValueFactory<>("amount"));
+                status_col_id.setCellValueFactory(new PropertyValueFactory<>("status"));
+                tv_disp.setItems(list);
             }
         });
 

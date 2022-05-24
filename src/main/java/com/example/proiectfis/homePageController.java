@@ -91,7 +91,7 @@ public class homePageController implements Initializable {
             button_bet.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent actionEvent) {
-                    DBUtils.addGameToBet(actionEvent,t1_id.getText(),t2_id.getText(),tf_data.getText(),tf_bet.getText(),tf_amount.getText(),"");
+                    DBUtils.addGameToBet(actionEvent,t1_id.getText(),t2_id.getText(),tf_data.getText(),tf_bet.getText(),tf_amount.getText(),"in validation...");
                     Connection con = null;
                     ResultSet rs = null;
                     try {

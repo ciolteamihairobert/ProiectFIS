@@ -40,8 +40,11 @@
             <TableView fx:id="tv_disp" layoutX="-2.0" layoutY="-1.0" prefHeight="226.0" prefWidth="503.0" style="-fx-background-color: #e2e836;">
               <columns>
                 <TableColumn fx:id="echipa1_id" prefWidth="75.0" text="Echipa 1" />
-                <TableColumn fx:id="echipa2_id" prefWidth="145.0" text="Echipa 2" />
-                  <TableColumn fx:id="data_id" prefWidth="119.0" text="Data" />
+                <TableColumn fx:id="echipa2_id" prefWidth="83.33334350585938" text="Echipa 2" />
+                  <TableColumn fx:id="data_id" prefWidth="98.33334350585938" text="Data" />
+                  <TableColumn fx:id="bet_col_id" prefWidth="75.0" text="Amount" />
+                  <TableColumn fx:id="status_col_id" prefWidth="75.0" text="Status" />
+                  <TableColumn fx:id="id_pariu" prefWidth="91.33331298828125" text="Bet" />
               </columns>
             </TableView>
             <Label layoutX="340.0" layoutY="239.0" text="Bet Answer" textFill="#e2e836">
