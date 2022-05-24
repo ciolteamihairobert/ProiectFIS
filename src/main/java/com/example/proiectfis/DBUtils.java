@@ -1,5 +1,6 @@
 package com.example.proiectfis;
 
+import javafx.beans.property.StringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -322,5 +323,20 @@ public class DBUtils {
             }
         }
     }
+    public static void Update(String status, String echipa1,String echipa2) throws SQLException {
+        Connection connection= DriverManager.getConnection("jdbc:mysql://localhost:3306/schemafis", "root","admin");
+        PreparedStatement preparedStatement = null;
+        preparedStatement = connection.prepareStatement("UPDATE cbet SET status=? WHERE echipa1=? AND echipa2=?");
+        preparedStatement.setString(1,status);
+        preparedStatement.setString(2,echipa1);
+        preparedStatement.setString(3,echipa2);
+        preparedStatement.execute();
+    }
+
+
+
+
+
+
 }
 

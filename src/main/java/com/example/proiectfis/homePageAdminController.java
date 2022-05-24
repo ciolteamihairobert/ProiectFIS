@@ -11,6 +11,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.net.URL;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
@@ -20,20 +21,20 @@ public class homePageAdminController implements Initializable {
     private TableView tv_disp;
 
     @FXML
-    private TableColumn<?, String> id_pariu;
+    private TableColumn <?,String>id_pariu;
 
     @FXML
-    private TableColumn<?, String> status_col_id;
+    private TableColumn<bet, String> status_col_id;
 
     @FXML
-    private TableColumn<?, String> bet_col_id;
+    private TableColumn <?,String>bet_col_id;
 
     @FXML
-    private TableColumn<?, String> echipa1_id;
+    private TableColumn <?,String>echipa1_id;
     @FXML
-    private TableColumn<?, String> echipa2_id;
+    private TableColumn <?,String>echipa2_id;
     @FXML
-    private TableColumn<?, String> data_id;
+    private TableColumn <?,String>data_id;
 
     @FXML
     private Button button_BetAnsView;
@@ -53,6 +54,16 @@ public class homePageAdminController implements Initializable {
     @FXML
     private TextField tf_data;
 
+    @FXML
+    private Button button_answer;
+
+    @FXML
+    private TextField answer;
+
+    @FXML
+    private TextField tf_ans_team1;
+    @FXML
+    private TextField tf_ans_team2;
 
     ObservableList<tabele> oblist = FXCollections.observableArrayList();
     @Override
@@ -63,6 +74,7 @@ public class homePageAdminController implements Initializable {
 
                 Connection con = null;
                 ResultSet rs = null;
+                oblist.removeAll(oblist);
                 try {
                     con = DBUtils.getConnection();
                     rs = con.createStatement().executeQuery("SELECT * FROM games");
@@ -99,10 +111,10 @@ public class homePageAdminController implements Initializable {
             public void handle(ActionEvent actionEvent) {
                 Connection con = null;
                 ResultSet rs = null;
+                oblist.removeAll(oblist);
                 try {
                     con = DBUtils.getConnection();
                     rs = con.createStatement().executeQuery("SELECT * FROM cbet");
-                    oblist.removeAll(oblist);
                     while (rs.next()) {
                         list.add(new bet(rs.getString("echipa1"), rs.getString("echipa2"), rs.getString("data"),rs.getString("pariu"),rs.getString("amount"),rs.getString("status")));
                     }
@@ -115,11 +127,21 @@ public class homePageAdminController implements Initializable {
                 data_id.setCellValueFactory(new PropertyValueFactory<>("data"));
                 id_pariu.setCellValueFactory(new PropertyValueFactory<>("pariu"));
                 bet_col_id.setCellValueFactory(new PropertyValueFactory<>("amount"));
-                status_col_id.setCellValueFactory(new PropertyValueFactory<>("status"));
+                status_col_id.setCellValueFactory(new PropertyValueFactory<bet, String>("status"));
                 tv_disp.setItems(list);
             }
         });
 
+       button_answer.setOnAction(new EventHandler<ActionEvent>() {
+           @Override
+           public void handle(ActionEvent event) {
+               try {
+                   DBUtils.Update(answer.getText(),tf_ans_team1.getText(),tf_ans_team2.getText());
+               } catch (SQLException e) {
+                   throw new RuntimeException(e);
+               }
+           }
+       });
 
 
     }
