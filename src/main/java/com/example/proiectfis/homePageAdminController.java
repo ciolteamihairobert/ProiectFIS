@@ -66,6 +66,7 @@ public class homePageAdminController implements Initializable {
     private TextField tf_ans_team2;
 
     ObservableList<tabele> oblist = FXCollections.observableArrayList();
+    ObservableList<bet> list = FXCollections.observableArrayList();
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         button_display.setOnAction(new EventHandler<ActionEvent>() {
@@ -75,6 +76,7 @@ public class homePageAdminController implements Initializable {
                 Connection con = null;
                 ResultSet rs = null;
                 oblist.removeAll(oblist);
+                list.removeAll(list);
                 try {
                     con = DBUtils.getConnection();
                     rs = con.createStatement().executeQuery("SELECT * FROM games");
@@ -105,13 +107,14 @@ public class homePageAdminController implements Initializable {
             }
         });
 
-        ObservableList<bet> list = FXCollections.observableArrayList();
+
         button_BetAnsView.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
                 Connection con = null;
                 ResultSet rs = null;
                 oblist.removeAll(oblist);
+                list.removeAll(list);
                 try {
                     con = DBUtils.getConnection();
                     rs = con.createStatement().executeQuery("SELECT * FROM cbet");

@@ -64,7 +64,11 @@ public class homePageController implements Initializable {
 
     @FXML
     private Button button_display_favorites;
+
+    @FXML
+    private Button button_see_past;
     ObservableList<tabele> oblist = FXCollections.observableArrayList();
+    ObservableList<bet> list = FXCollections.observableArrayList();
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
             button_disp.setOnAction(new EventHandler<ActionEvent>() {
@@ -75,6 +79,7 @@ public class homePageController implements Initializable {
                     Connection con = null;
                     ResultSet rs = null;
                     oblist.removeAll(oblist);
+                    list.removeAll(list);
                     try {
                         con = DBUtils.getConnection();
                         rs = con.createStatement().executeQuery("SELECT * FROM games");
@@ -94,18 +99,17 @@ public class homePageController implements Initializable {
                 }
             });
 
-        ObservableList<bet> list = FXCollections.observableArrayList();
-
             button_bet.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent actionEvent) {
                     DBUtils.addGameToBet(actionEvent,t1_id.getText(),t2_id.getText(),tf_data.getText(),tf_bet.getText(),tf_amount.getText(),"in validation...");
                     Connection con = null;
                     ResultSet rs = null;
+                    oblist.removeAll(oblist);
+                    list.removeAll(list);
                     try {
                         con = DBUtils.getConnection();
                         rs = con.createStatement().executeQuery("SELECT * FROM cbet");
-                        oblist.removeAll(oblist);
                         while (rs.next()) {
                             list.add(new bet(rs.getString("echipa1"), rs.getString("echipa2"), rs.getString("data"),rs.getString("pariu"),rs.getString("amount"),rs.getString("status")));
                         }
@@ -135,6 +139,33 @@ public class homePageController implements Initializable {
                 public void handle(ActionEvent event) {
                     DBUtils.addFav(event,tf_favorites.getText());
                     tf_favorites.setText("");
+                }
+            });
+
+            button_see_past.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent actionEvent) {
+                    Connection con = null;
+                    ResultSet rs = null;
+                    oblist.removeAll(oblist);
+                    list.removeAll(list);
+                    try {
+                        con = DBUtils.getConnection();
+                        rs = con.createStatement().executeQuery("SELECT * FROM cbet WHERE status='Accepted' OR status='Denied'");
+                        while (rs.next()) {
+                            list.add(new bet(rs.getString("echipa1"), rs.getString("echipa2"), rs.getString("data"),rs.getString("pariu"),rs.getString("amount"),rs.getString("status")));
+                        }
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+
+                    echipa1_id.setCellValueFactory(new PropertyValueFactory<>("echipa1"));
+                    echipa2_id.setCellValueFactory(new PropertyValueFactory<>("echipa2"));
+                    data_id.setCellValueFactory(new PropertyValueFactory<>("data"));
+                    id_pariu.setCellValueFactory(new PropertyValueFactory<>("pariu"));
+                    bet_col_id.setCellValueFactory(new PropertyValueFactory<>("amount"));
+                    status_col_id.setCellValueFactory(new PropertyValueFactory<>("status"));
+                    tv_disp.setItems(list);
                 }
             });
     }
