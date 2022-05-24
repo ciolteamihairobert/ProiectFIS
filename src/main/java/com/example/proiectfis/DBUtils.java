@@ -248,32 +248,47 @@ public class DBUtils {
             }
         }
     }
-    public static void addGameToBet(ActionEvent event,String echipa1, String echipa2,String data,String amount,String status)  {
+    public static void addGameToBet(ActionEvent event,String echipa1, String echipa2,String data,String pariu,String amount,String status)  {
         Connection connection=null;
         PreparedStatement psInsert=null;
         PreparedStatement psCheckItemExists=null;
+        PreparedStatement psCheckGame=null;
         ResultSet resultSet=null;
+        ResultSet resultSet1=null;
         try{
             connection= DriverManager.getConnection("jdbc:mysql://localhost:3306/schemafis", "root", "admin");
             psCheckItemExists = connection.prepareStatement("SELECT * FROM cbet WHERE echipa1= ? AND echipa2=?");
+            psCheckGame =connection.prepareStatement("SELECT * FROM games WHERE echipa1=? AND echipa2=?");
             psCheckItemExists.setString(1,echipa1);
             psCheckItemExists.setString(2,echipa2);
+            psCheckGame.setString(1,echipa1);
+            psCheckGame.setString(2,echipa2);
             resultSet=psCheckItemExists.executeQuery();
-
+            resultSet1=psCheckGame.executeQuery();
+            if(!resultSet1.isBeforeFirst()){
+                System.out.println("Game does not exist!");
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("Game does not exist!");
+                alert.show();
+            }else{
             if(resultSet.isBeforeFirst()){
                 System.out.println("Bet already exist!");
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setContentText("This bet is already placed!");
                 alert.show();
             }else{
-                psInsert = connection.prepareStatement("INSERT INTO cbet (echipa1, echipa2,data,amount,status) VALUES (?, ?, ?, ?, ?)");
+                psInsert = connection.prepareStatement("INSERT INTO cbet (echipa1, echipa2,data,pariu,amount,status) VALUES (?, ?, ?, ?, ?, ?)");
                 psInsert.setString(1,echipa1);
                 psInsert.setString(2,echipa2);
                 psInsert.setString(3,data);
-                psInsert.setString(4,amount);
-                psInsert.setString(5,status);
+                psInsert.setString(4,pariu);
+                psInsert.setString(5,amount);
+                psInsert.setString(6,status);
                 psInsert.executeUpdate();
-            }
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setContentText("Game betted succesfully!");
+                alert.show();
+            }}
         }catch (SQLException e){
             e.printStackTrace();
         } finally {
