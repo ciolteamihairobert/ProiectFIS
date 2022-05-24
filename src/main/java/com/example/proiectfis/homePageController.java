@@ -56,6 +56,14 @@ public class homePageController implements Initializable {
     @FXML
     private TextField tf_amount;
 
+    @FXML
+    private TextField tf_favorites;
+
+    @FXML
+    private Button button_favorites;
+
+    @FXML
+    private Button button_display_favorites;
     ObservableList<tabele> oblist = FXCollections.observableArrayList();
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -112,6 +120,21 @@ public class homePageController implements Initializable {
                     bet_col_id.setCellValueFactory(new PropertyValueFactory<>("amount"));
                     status_col_id.setCellValueFactory(new PropertyValueFactory<>("status"));
                     tv_disp.setItems(list);
+                }
+            });
+
+            button_display_favorites.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    DBUtils.changeScene(event, "/favorites.fxml", "Favorites", null, null);
+                }
+            });
+
+            button_favorites.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    DBUtils.addFav(event,tf_favorites.getText());
+                    tf_favorites.setText("");
                 }
             });
     }

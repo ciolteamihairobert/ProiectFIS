@@ -333,6 +333,62 @@ public class DBUtils {
         preparedStatement.execute();
     }
 
+    public static void addFav(ActionEvent event, String echipa)  {
+        Connection connection=null;
+        PreparedStatement psInsert=null;
+        PreparedStatement psCheckItemExists=null;
+        ResultSet resultSet=null;
+        try{
+            connection= DriverManager.getConnection("jdbc:mysql://localhost:3306/schemafis", "root", "admin");
+            psCheckItemExists = connection.prepareStatement("SELECT * FROM favorites WHERE echipa = ?");
+            psCheckItemExists.setString(1, echipa);
+            resultSet=psCheckItemExists.executeQuery();
+            if(resultSet.isBeforeFirst()){
+                System.out.println("Team is already exists!");
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("This team is already added");
+                alert.show();
+            }else{
+                psInsert = connection.prepareStatement("INSERT INTO favorites (echipa) VALUES (?)");
+                psInsert.setString(1,echipa);
+                psInsert.executeUpdate();
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        } finally {
+            if (resultSet!=null){
+                try{
+                    resultSet.close();
+                }catch(SQLException e){
+                    e.printStackTrace();
+                }
+            }
+            if (psCheckItemExists!=null){
+                try{
+                    psCheckItemExists.close();
+                }catch(SQLException e){
+                    e.printStackTrace();
+                }
+            }
+            if (psInsert!=null){
+                try{
+                    psInsert.close();
+                }catch(SQLException e){
+                    e.printStackTrace();
+                }
+            }
+            if (connection!=null){
+                try{
+                    connection.close();
+                }catch(SQLException e){
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+
+
 
 
 
