@@ -6,9 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.net.URL;
@@ -19,17 +17,38 @@ import java.util.ResourceBundle;
 
 public class homePageController implements Initializable {
     @FXML
-    private TableView<tabele> tv_disp;
+    private TableView tv_disp;
 
     @FXML
-    private TableColumn<tabele, String> echipa1_id;
+    private TableColumn<?, String> echipa1_id;
     @FXML
-    private TableColumn<tabele, String> echipa2_id;
+    private TableColumn<?, String> echipa2_id;
     @FXML
-    private TableColumn<tabele, String> data_id;
+    private TableColumn<?, String> data_id;
+
+    @FXML
+    private TableColumn<?, String> bet_col_id;
+
+    @FXML
+    private TableColumn<?, String> status_col_id;
 
     @FXML
     private Button button_disp;
+
+    @FXML
+    private Button button_bet;
+
+    @FXML
+    private TextField t1_id;
+
+    @FXML
+    private TextField t2_id;
+
+    @FXML
+    private TextField tf_bet;
+
+    @FXML
+    private TextField tf_data;
 
     ObservableList<tabele> oblist = FXCollections.observableArrayList();
     @Override
@@ -53,10 +72,25 @@ public class homePageController implements Initializable {
                     echipa1_id.setCellValueFactory(new PropertyValueFactory<>("echipa1"));
                     echipa2_id.setCellValueFactory(new PropertyValueFactory<>("echipa2"));
                     data_id.setCellValueFactory(new PropertyValueFactory<>("data"));
-
+                    //bet_col_id.setCellValueFactory(new PropertyValueFactory<>("game_id"));
                     tv_disp.setItems(oblist);
                 }
             });
+
+        ObservableList<bet> list = FXCollections.observableArrayList();
+
+            button_bet.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent actionEvent) {
+                    DBUtils.addGameToBet(actionEvent,t1_id.getText(),t2_id.getText(),tf_data.getText(),tf_bet.getText(),"");
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setContentText("Game betted succesfully!");
+                    alert.show();
+
+
+                }
+            });
+
 
     }
 }

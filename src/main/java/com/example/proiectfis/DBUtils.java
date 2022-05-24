@@ -248,5 +248,64 @@ public class DBUtils {
             }
         }
     }
+    public static void addGameToBet(ActionEvent event,String echipa1, String echipa2,String data,String amount,String status)  {
+        Connection connection=null;
+        PreparedStatement psInsert=null;
+        PreparedStatement psCheckItemExists=null;
+        ResultSet resultSet=null;
+        try{
+            connection= DriverManager.getConnection("jdbc:mysql://localhost:3306/schemafis", "root", "admin");
+            psCheckItemExists = connection.prepareStatement("SELECT * FROM cbet WHERE echipa1= ? AND echipa2=?");
+            psCheckItemExists.setString(1,echipa1);
+            psCheckItemExists.setString(2,echipa2);
+            resultSet=psCheckItemExists.executeQuery();
+
+            if(resultSet.isBeforeFirst()){
+                System.out.println("Bet already exist!");
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("This bet is already placed!");
+                alert.show();
+            }else{
+                psInsert = connection.prepareStatement("INSERT INTO cbet (echipa1, echipa2,data,amount,status) VALUES (?, ?, ?, ?, ?)");
+                psInsert.setString(1,echipa1);
+                psInsert.setString(2,echipa2);
+                psInsert.setString(3,data);
+                psInsert.setString(4,amount);
+                psInsert.setString(5,status);
+                psInsert.executeUpdate();
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        } finally {
+            if (resultSet!=null){
+                try{
+                    resultSet.close();
+                }catch(SQLException e){
+                    e.printStackTrace();
+                }
+            }
+            if (psCheckItemExists!=null){
+                try{
+                    psCheckItemExists.close();
+                }catch(SQLException e){
+                    e.printStackTrace();
+                }
+            }
+            if (psInsert!=null){
+                try{
+                    psInsert.close();
+                }catch(SQLException e){
+                    e.printStackTrace();
+                }
+            }
+            if (connection!=null){
+                try{
+                    connection.close();
+                }catch(SQLException e){
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
 }
 
