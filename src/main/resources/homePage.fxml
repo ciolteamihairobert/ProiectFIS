@@ -26,7 +26,7 @@
             <Button fx:id="button_favorites" layoutX="14.0" layoutY="382.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="106.0" style="-fx-background-color: yellow;" text="Add to favorites" />
             <Button fx:id="button_see_past" layoutX="81.0" layoutY="457.0" mnemonicParsing="false" style="-fx-background-color: yellow;" text="See past bets" />
             <TextField fx:id="tf_bet" layoutX="101.0" layoutY="258.0" promptText="Bet" />
-            <TextField fx:id="tf_idg_favorites" layoutX="144.0" layoutY="382.0" prefHeight="25.0" prefWidth="114.0" promptText="Game Id" />
+            <TextField fx:id="tf_idg_favorites" layoutX="144.0" layoutY="382.0" prefHeight="25.0" prefWidth="114.0" promptText="Team" />
             <TextField fx:id="tf_amount" layoutX="101.0" layoutY="283.0" promptText="Amount" />
             <Button fx:id="button_display_favorites" layoutX="14.0" layoutY="424.0" mnemonicParsing="false" style="-fx-background-color: yellow;" text="Display Favorites" />
             <Button fx:id="button_disp" layoutX="152.0" layoutY="424.0" mnemonicParsing="false" style="-fx-background-color: yellow;" text=" Display Games" />
