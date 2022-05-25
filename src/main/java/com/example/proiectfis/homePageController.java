@@ -57,7 +57,7 @@ public class homePageController implements Initializable {
     private TextField tf_amount;
 
     @FXML
-    private TextField tf_favorites;
+    private TextField tf_idg_favorites;
 
     @FXML
     private Button button_favorites;
@@ -137,8 +137,14 @@ public class homePageController implements Initializable {
             button_favorites.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent event) {
-                    DBUtils.addFav(event,tf_favorites.getText());
-                    tf_favorites.setText("");
+                    if(tf_idg_favorites.getText().isEmpty()){
+                        Alert alert = new Alert(Alert.AlertType.ERROR);
+                        alert.setContentText("Please enter your favorite!");
+                        alert.show();
+                    }else {
+                        DBUtils.addFav(event, tf_idg_favorites.getText());
+                        tf_idg_favorites.setText("");
+                    }
                 }
             });
 

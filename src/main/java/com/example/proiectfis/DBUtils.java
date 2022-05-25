@@ -343,16 +343,15 @@ public class DBUtils {
             psCheckItemExists = connection.prepareStatement("SELECT * FROM favorites WHERE echipa = ?");
             psCheckItemExists.setString(1, echipa);
             resultSet=psCheckItemExists.executeQuery();
+
             if(resultSet.isBeforeFirst()){
-                System.out.println("Team is already exists!");
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setContentText("This team is already added");
                 alert.show();
             }else{
                 psInsert = connection.prepareStatement("INSERT INTO favorites (echipa) VALUES (?)");
                 psInsert.setString(1,echipa);
-                psInsert.executeUpdate();
-            }
+                psInsert.executeUpdate();}
         }catch (SQLException e){
             e.printStackTrace();
         } finally {
