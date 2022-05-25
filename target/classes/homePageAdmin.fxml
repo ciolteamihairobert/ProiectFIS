@@ -23,17 +23,12 @@
                   <Font size="14.0" />
                </font>
             </Button>
-            <Button fx:id="button_GameAddView" layoutX="73.0" layoutY="287.0" mnemonicParsing="false" style="-fx-background-color: #e2e836;" text="Add game">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Button>
             <Label layoutX="26.0" layoutY="200.0" text="Choose which table to display">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <Button fx:id="button_display" layoutX="89.0" layoutY="346.0" mnemonicParsing="false" style="-fx-background-color: yellow;" text="Display" />
+            <Button fx:id="button_display" layoutX="71.0" layoutY="276.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="88.0" style="-fx-background-color: yellow;" text="Display" />
          </children></AnchorPane>
       <AnchorPane prefHeight="497.0" prefWidth="497.0" style="-fx-background-color: #273b7a;">
          <children>
