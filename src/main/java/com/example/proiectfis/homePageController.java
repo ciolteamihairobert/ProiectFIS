@@ -102,7 +102,13 @@ public class homePageController implements Initializable {
             button_bet.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent actionEvent) {
-                    DBUtils.addGameToBet(actionEvent,t1_id.getText(),t2_id.getText(),tf_data.getText(),tf_bet.getText(),tf_amount.getText(),"in validation...");
+                    if(t1_id.getText().isEmpty()||t2_id.getText().isEmpty()||tf_data.getText().isEmpty()||tf_bet.getText().isEmpty()||tf_amount.getText().isEmpty()){
+                        Alert alert = new Alert(Alert.AlertType.ERROR);
+                        alert.setContentText("Please enter your bet!");
+                        alert.show();
+                    }else {
+                        DBUtils.addGameToBet(actionEvent, t1_id.getText(), t2_id.getText(), tf_data.getText(), tf_bet.getText(), tf_amount.getText(), "in validation...");
+                    }
                     Connection con = null;
                     ResultSet rs = null;
                     oblist.removeAll(oblist);

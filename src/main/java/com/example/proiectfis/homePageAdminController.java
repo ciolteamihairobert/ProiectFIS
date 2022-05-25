@@ -91,7 +91,6 @@ public class homePageAdminController implements Initializable {
                 echipa1_id.setCellValueFactory(new PropertyValueFactory<>("echipa1"));
                 echipa2_id.setCellValueFactory(new PropertyValueFactory<>("echipa2"));
                 data_id.setCellValueFactory(new PropertyValueFactory<>("data"));
-
                 tv_disp.setItems(oblist);
 
             }
@@ -100,10 +99,17 @@ public class homePageAdminController implements Initializable {
         button_add.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                DBUtils.addGame(event,id_t1.getText(),id_t2.getText(),tf_data.getText());
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setContentText("Game added succesfully!");
-                alert.show();
+                if(id_t1.getText().isEmpty()||id_t2.getText().isEmpty()||tf_data.getText().isEmpty()){
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setContentText("Please enter the game correct!");
+                    alert.show();
+                }else {
+                    DBUtils.addGame(event, id_t1.getText(), id_t2.getText(), tf_data.getText());
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setContentText("Game added succesfully!");
+                    alert.show();
+                }
+
             }
         });
 
@@ -139,7 +145,16 @@ public class homePageAdminController implements Initializable {
            @Override
            public void handle(ActionEvent event) {
                try {
-                   DBUtils.Update(answer.getText(),tf_ans_team1.getText(),tf_ans_team2.getText());
+                   if(answer.getText().isEmpty()||tf_ans_team1.getText().isEmpty()||tf_ans_team2.getText().isEmpty()){
+                       Alert alert = new Alert(Alert.AlertType.ERROR);
+                       alert.setContentText("Please enter the answer correct!");
+                       alert.show();
+                   }else{
+                       DBUtils.Update(answer.getText(),tf_ans_team1.getText(),tf_ans_team2.getText());
+                       Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                       alert.setContentText("Game validated successfully!");
+                       alert.show();
+                   }
                } catch (SQLException e) {
                    throw new RuntimeException(e);
                }
